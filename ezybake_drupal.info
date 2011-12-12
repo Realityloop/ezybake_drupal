@@ -1,0 +1,20 @@
+name = Ezy-bake Drupal
+description = Demonstration install profile for the Realityloop Pty Ltd DDU 2012 session "Ezy-bake Drupal: Cooking sites with Distributions"
+core = 7.x
+
+
+
+; Core dependencies
+dependencies[] = contextual
+dependencies[] = dashboard
+dependencies[] = menu
+dependencies[] = overlay
+dependencies[] = path
+
+
+; Contrib dependecies
+dependencies[] = features
+
+
+; Features
+; dependencies[] =
