@@ -5,19 +5,22 @@ api = 2
 
 ; Modules - Contrib
 projects[features][subdir] = "contrib"
-; projects[features][version] = ""
+projects[features][version] = "1.0-beta4"
 
+; Download a specific GIT commit as Features exportability has been committed
+; but no stable has been released.
 projects[wysiwyg][subdir] = "contrib"
-; projects[wysiwyg][version] = ""
-projects[wysiwyg][patch][] = "http://drupal.org/files/0001-feature.inc-from-624018-211.patch"
+projects[wysiwyg][download][type] = "git"
+projects[wysiwyg][download][url] = "http://git.drupal.org/project/wysiwyg.git"
+projects[wysiwyg][download][revision] = "3e7568e8b8ed077caadcac4dfa147fb394b0b041"
 
 
 ; Modules - Temporary
 projects[omega_tools][subdir] = "temporary"
-; projects[omega_tools][version] = ""
+projects[omega_tools][version] = "3.0-rc3"
 
-; projects[zenophile][subdir] = "temporary"
-; projects[zenophile][version] = ""
+projects[zenophile][subdir] = "temporary"
+projects[zenophile][version] = "1.0"
 
 
 ; Libraries
