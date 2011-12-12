@@ -4,6 +4,9 @@ api = 2
 
 
 ; Modules - Contrib
+projects[ctools][subdir] = "contrib"
+projects[ctools][version] = "1.0-rc1"
+
 projects[features][subdir] = "contrib"
 projects[features][version] = "1.0-beta4"
 
@@ -26,3 +29,17 @@ projects[zenophile][version] = "1.0"
 ; Libraries
 libraries[profiler][download][type] = "get"
 libraries[profiler][download][url] = "http://ftp.drupal.org/files/projects/profiler-7.x-2.0-beta1.tar.gz"
+
+
+; Themes
+projects[omega][type] = "theme"
+projects[omega][version] = "3.0"
+
+projects[rubik][type] = "theme"
+projects[rubik][version] = "4.0-beta6"
+
+projects[tao][type] = "theme"
+projects[tao][version] = "3.0-beta4"
+
+projects[zen][type] = "theme"
+projects[zen][version] = "3.1"

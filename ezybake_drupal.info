@@ -6,7 +6,7 @@ core = 7.x
 
 ; Core dependencies
 dependencies[] = contextual
-dependencies[] = dashboard
+; dependencies[] = dashboard
 dependencies[] = menu
 dependencies[] = overlay
 dependencies[] = path
@@ -18,3 +18,8 @@ dependencies[] = features
 
 ; Features
 ; dependencies[] =
+
+
+; Temporary dependencies
+dependencies[] = omega_tools
+dependencies[] = zenophile

@@ -7,63 +7,71 @@
 /**
  * Implements hook_install().
  */
-function ezybake_drupal_instal() {
+function ezybake_drupal_install() {
   // Create Omega HTML 5 subtheme via Omega Tools module.
   _ezybake_drupal_starterkit_omega();
 
   // Create Zen subtheme via Zenophile module.
   _ezybake_drupal_starterkit_zen();
+
+  // Disable all temporary modules.
+  module_disable(array('omega_tools', 'zenophile'));
 }
 
 /**
  * Create Omega HTML5 subtheme.
+ *
+ * Modified version of the Omega Tools drush omega-subtheme function.
  */
 function _ezybake_drupal_starterkit_omega() {
-  // Manually load include files for Omega Tools, the module doesn't have to be
-  // enabled it just needs to be accessible.
-  module_load_include('inc', 'omega_tools', 'includes/omega_tools.admin');
-  module_load_include('inc', 'omega_tools', 'includes/omega_tools.wizard');
-
   // Programatically generate theme based on sites configuration path
   // (sites/[path]).
   // @TODO - May need to use request_uri() instead for non-aegir based sites.
   $name = preg_filter('/(sites\/)(.*?)\..*/', '$2', conf_path()) . '_omega_theme';
 
-  // Build dummy $form_state object to submit to Omega Tools form submit
-  // handler.
-  $form_state = array(
-    'values' => array(
-      // @TODO - Pull in a better name for theme from aegir.
-      //'name' => variable_get('site_name', '') . ' theme',
-      'name' => 'Site theme',
-      'machine_name' => $name,
-      'automated' => 1,
-      'destination' => str_replace('sites/', '', conf_path()),
-      'base' => 'omega',
-      'starterkit' => 'starterkit_omega_html5',
-    ),
-  );
+  $subtheme = new stdClass();
+  $subtheme->new = TRUE;
+  // @TODO - Generate a better theme name.
+  $subtheme->name = 'Site theme';
+  $subtheme->machine_name = $name;
+  $subtheme->path = conf_path() . '/themes/' . $subtheme->machine_name;
+  $subtheme->default = TRUE;
+  $subtheme->status = TRUE;
 
-  // Submit dummy $form_state object.
-  omega_tools_subtheme_add_submit(array(), $form_state);
-
-  // Add aditional information to the updated $form_state object to submit to
-  // Omega Tools form wizard finish callback.
-  $form_state = array(
-    'subtheme' => omega_tools_cache_load($name),
-  );
-  $form_state['subtheme']->destination = conf_path() . "/themes/custom/{$name}";
-  $form_state['subtheme']->status = 1;
-  $form_state['subtheme']->default = TRUE;
-
-  // Submit dummt $form_state object and complete creation of Omega HTML5
-  // subtheme.
-  omega_tools_subtheme_wizard_finish($form_state);
+  omega_tools_subtheme_create($subtheme);
+  omega_tools_subtheme_process($subtheme);
 }
 
 /**
  * Create Zen subtheme.
+ *
+ * Modified version of zenophile_callback() from
+ * http://drupal.org/files/zenophile.drush_.inc-1085164-11.patch.
  */
 function _ezybake_drupal_starterkit_zen() {
-  // @TODO
+  // Programatically generate theme based on sites configuration path
+  // (sites/[path]).
+  // @TODO - May need to use request_uri() instead for non-aegir based sites.
+  $name = preg_filter('/(sites\/)(.*?)\..*/', '$2', conf_path()) . '_zen_theme';
+
+  $form_state = array(
+    'values' => array(
+      'sysname' => $name,
+      // @TODO - Generate a better theme description.
+      'description' => 'Site theme',
+      'parent' => 'STARTERKIT',
+      // @TODO - Generate a better theme name.
+      'friendly' => 'Site theme',
+      'layout' => 'fixed',
+      'fresh' => TRUE,
+      'site' => str_replace('sites/', '', conf_path()),
+      'sidebars_on' => FALSE,
+      'sidebar-left' => '200',
+      'sidebar-right' => '200',
+      'page' => '960',
+      'sidebar-pos' => 'normal',
+    ),
+  );
+
+  drupal_form_submit('zenophile_create', $form_state);
 }
