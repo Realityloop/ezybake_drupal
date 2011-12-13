@@ -31,8 +31,7 @@ function _ezybake_drupal_starterkit_omega() {
 
   $subtheme = new stdClass();
   $subtheme->new = TRUE;
-  // @TODO - Generate a better theme name.
-  $subtheme->name = 'Site theme';
+  $subtheme->name = 'Site theme - Omega';
   $subtheme->machine_name = $name;
   $subtheme->path = conf_path() . '/themes/' . $subtheme->machine_name;
   $subtheme->default = TRUE;
@@ -57,11 +56,9 @@ function _ezybake_drupal_starterkit_zen() {
   $form_state = array(
     'values' => array(
       'sysname' => $name,
-      // @TODO - Generate a better theme description.
-      'description' => 'Site theme',
+      'description' => 'Site theme - Zen',
       'parent' => 'STARTERKIT',
-      // @TODO - Generate a better theme name.
-      'friendly' => 'Site theme',
+      'friendly' => 'Site theme - Zen',
       'layout' => 'fixed',
       'fresh' => TRUE,
       'site' => str_replace('sites/', '', conf_path()),

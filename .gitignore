@@ -1,5 +1,5 @@
 .DS_Store
 libraries
-modules
+modules/*
 !modules/ezybake_drupal
 themes

@@ -4,18 +4,28 @@ api = 2
 
 
 ; Modules - Contrib
+projects[backup_migrate][subdir] = "contrib"
+projects[backup_migrate][version] = "2.2"
+
+projects[context][subdir] = "contrib"
+projects[context][version] = "3.0-beta2"
+
 projects[ctools][subdir] = "contrib"
 projects[ctools][version] = "1.0-rc1"
 
 projects[features][subdir] = "contrib"
 projects[features][version] = "1.0-beta4"
 
-; Download a specific GIT commit as Features exportability has been committed
-; but no stable has been released.
-projects[wysiwyg][subdir] = "contrib"
+projects[strongarm][subdir] = "contrib"
+projects[strongarm][version] = "2.0-beta4"
+
+; Download a specific Git commit as Features exportability has been committed
+; but no stable build has been released.
+projects[wysiwyg][type] = "module"
 projects[wysiwyg][download][type] = "git"
 projects[wysiwyg][download][url] = "http://git.drupal.org/project/wysiwyg.git"
 projects[wysiwyg][download][revision] = "3e7568e8b8ed077caadcac4dfa147fb394b0b041"
+projects[wysiwyg][subdir] = "contrib"
 
 
 ; Modules - Temporary
@@ -27,6 +37,9 @@ projects[zenophile][version] = "1.0"
 
 
 ; Libraries
+libraries[ckeditor][download][type] = "get"
+libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.2/ckeditor_3.6.2.zip"
+
 libraries[profiler][download][type] = "get"
 libraries[profiler][download][url] = "http://ftp.drupal.org/files/projects/profiler-7.x-2.0-beta1.tar.gz"
 
