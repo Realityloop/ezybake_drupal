@@ -4,6 +4,18 @@ api = 2
 
 
 ; Modules - Contrib
+projects[admin][subdir] = "contrib"
+projects[admin][version] = "2.0-beta3"
+
+projects[admin_menu][subdir] = "contrib"
+projects[admin_menu][version] = "3.0-rc1"
+
+projects[admin_select][type] = "module"
+projects[admin_select][download][type] = "git"
+projects[admin_select][download][url] = "git://github.com/Decipher/admin_select.git"
+projects[admin_select][download][revision] = "aaea6db805a8a7efbf88e651828703f8f7a18c6b"
+projects[admin_select][subdir] = "contrib"
+
 projects[backup_migrate][subdir] = "contrib"
 projects[backup_migrate][version] = "2.2"
 

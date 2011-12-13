@@ -17,7 +17,7 @@ dependencies[] = features
 
 
 ; Features
-; dependencies[] =
+dependencies[] = ezybake_core
 
 
 ; Temporary dependencies

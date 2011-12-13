@@ -14,6 +14,9 @@ function ezybake_drupal_install() {
   // Create Zen subtheme via Zenophile module.
   _ezybake_drupal_starterkit_zen();
 
+  // Create core feature from STARTERKIT module via Omega Tools module.
+  _ezybake_drupal_starterkit_feature();
+
   // Disable all temporary modules.
   module_disable(array('omega_tools', 'zenophile'));
 }
@@ -34,6 +37,7 @@ function _ezybake_drupal_starterkit_omega() {
   $subtheme->name = 'Site theme - Omega';
   $subtheme->machine_name = $name;
   $subtheme->path = conf_path() . '/themes/' . $subtheme->machine_name;
+  $subtheme->base = 'omega';
   $subtheme->default = TRUE;
   $subtheme->status = TRUE;
 
@@ -71,4 +75,16 @@ function _ezybake_drupal_starterkit_zen() {
   );
 
   drupal_form_submit('zenophile_create', $form_state);
+}
+
+/**
+ * Create core feature.
+ */
+function _ezybake_drupal_starterkit_feature() {
+  $machine_name = preg_filter('/(sites\/)(.*?)\..*/', '$2', conf_path());
+  $destination = conf_path() . '/modules/' . $machine_name . '_core';
+
+  omega_tools_copy_recursive(drupal_get_path('module', 'ezybake_core') . '/STARTERKIT', $destination);
+  omega_tools_move($destination . '/STARTERKIT_core.info.txt', $destination . '/STARTERKIT_core.info');
+  omega_tools_rewrite_recursive($destination, 'STARTERKIT', $machine_name, $machine_name);
 }
