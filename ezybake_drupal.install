@@ -19,6 +19,14 @@ function ezybake_drupal_install() {
 
   // Disable all temporary modules.
   module_disable(array('omega_tools', 'zenophile'));
+
+  // Add 'administrator' role to UID 1.
+  db_insert('users_roles')
+    ->fields(array(
+      'uid' => 1,
+      'rid' => 3,
+    ))
+    ->execute();
 }
 
 /**
@@ -82,9 +90,12 @@ function _ezybake_drupal_starterkit_zen() {
  */
 function _ezybake_drupal_starterkit_feature() {
   $machine_name = preg_filter('/(sites\/)(.*?)\..*/', '$2', conf_path());
-  $destination = conf_path() . '/modules/' . $machine_name . '_core';
+  $destination = conf_path() . '/modules/ezybake_drupal/' . $machine_name . '_core';
 
   omega_tools_copy_recursive(drupal_get_path('module', 'ezybake_core') . '/STARTERKIT', $destination);
   omega_tools_move($destination . '/STARTERKIT_core.info.txt', $destination . '/STARTERKIT_core.info');
   omega_tools_rewrite_recursive($destination, 'STARTERKIT', $machine_name, $machine_name);
+
+  // Enable the feature.
+  module_enable(array($machine_name . '_core'));
 }

@@ -1,6 +1,7 @@
 <?php
 /**
  * @file
+ * Ezy-bake Drupal .profile file.
  */
 
 /**

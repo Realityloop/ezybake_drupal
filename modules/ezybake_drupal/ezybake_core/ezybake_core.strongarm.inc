@@ -15,9 +15,13 @@ function ezybake_core_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'admin_select_defaults';
   $strongarm->value = array(
+    3 => array(
+      'admin_select_default' => 'admin_menu',
+      'weight' => '-2',
+    ),
     2 => array(
       'admin_select_default' => 'admin',
-      'weight' => '0',
+      'weight' => '-1',
     ),
   );
   $export['admin_select_defaults'] = $strongarm;

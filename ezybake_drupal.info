@@ -6,7 +6,6 @@ core = 7.x
 
 ; Core dependencies
 dependencies[] = contextual
-; dependencies[] = dashboard
 dependencies[] = field_ui
 dependencies[] = menu
 dependencies[] = overlay

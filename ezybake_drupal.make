@@ -25,6 +25,12 @@ projects[context][version] = "3.0-beta2"
 projects[ctools][subdir] = "contrib"
 projects[ctools][version] = "1.0-rc1"
 
+projects[diff][subdir] = "contrib"
+projects[diff][version] = "2.0"
+
+projects[environment_indicator][subdir] = "contrib"
+projects[environment_indicator][version] = "1.1"
+
 projects[features][subdir] = "contrib"
 projects[features][version] = "1.0-beta4"
 
